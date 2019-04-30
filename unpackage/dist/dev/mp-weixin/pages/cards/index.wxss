@@ -1,0 +1,8 @@
+
+.page{
+	height: 300px;
+}
+.card_line{
+	height: 150rpx;
+}
+
