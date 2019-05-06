@@ -14,5 +14,6 @@
     "cards": "/pages/cards/index",
     "orders": "/pages/orders/index",
     "account": "/pages/account/index"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

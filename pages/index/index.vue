@@ -32,14 +32,41 @@
 	export default {
 		data() {
 			return {
-				PageCur: 'cards'
+				PageCur: 'cards',
+				userInfo:''
 			}
 		},
 		computed:{
-			...mapState(['login', 'userName'])  
+			...mapState(['login', 'userName'])
 		},
 		onLoad() {
-		
+	
+			uni.getUserInfo({
+				success(res) {
+				const { encryptedData , iv } = res
+				uni.login({
+				success(res) {
+					console.log(res,res.code);
+					const code = res.code
+					uni.request({
+						url: 'http://127.0.0.1:3000/users/wxLogin',
+						method: 'POST',
+						data: {
+							code:code,
+							encryptedData,
+							iv
+						},
+						success: res => {
+							console.log(res);
+							console.log('ss');
+						},
+						fail: () => {},
+						complete: () => {}
+					});
+				}
+			})
+				}
+			})
 		},
 		methods: {
 			 ...mapMutations(['logout']) ,
